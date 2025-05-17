@@ -1,20 +1,19 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, jsonify, request, send_file
 import os
 import logging
-from jinja2.exceptions import TemplateError
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__, template_folder='.', static_folder='.')
+app = Flask(__name__, static_folder='.')
 
-# Verify template file
-template_path = os.path.join(app.template_folder, 'index.html')
-if not os.path.exists(template_path):
-    logger.error(f"Template file not found at: {template_path}")
+# Verify index.html file
+index_path = os.path.join(app.static_folder, 'index.html')
+if not os.path.exists(index_path):
+    logger.error(f"index.html not found at: {index_path}")
 else:
-    logger.info(f"Template file found at: {template_path}")
+    logger.info(f"index.html found at: {index_path}")
 
 # Sample data
 practice_questions = {
@@ -57,15 +56,12 @@ completed_tasks = {}
 def index():
     logger.info("Attempting to serve index.html")
     try:
-        if not os.path.exists(template_path):
-            logger.error(f"index.html not found at {template_path}")
-            return jsonify({"error": "Template file missing", "path": template_path}), 500
-        return render_template('index.html')
-    except TemplateError as te:
-        logger.error(f"Template rendering error: {str(te)}")
-        return jsonify({"error": "Failed to load page", "details": str(te)}), 500
+        if not os.path.exists(index_path):
+            logger.error(f"index.html not found at {index_path}")
+            return jsonify({"error": "File missing", "path": index_path}), 500
+        return send_file(index_path)
     except Exception as e:
-        logger.error(f"Unexpected error serving index.html: {str(e)}")
+        logger.error(f"Error serving index.html: {str(e)}")
         return jsonify({"error": "Failed to load page", "details": str(e)}), 500
 
 @app.route('/api/questions', methods=['GET'])
