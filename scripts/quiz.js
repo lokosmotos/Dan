@@ -1,35 +1,38 @@
 function startQuiz(topic) {
     let questions = [];
+    let subjectName = "";
     
-    if (topic === 'science1') {
+    // Islamic Studies Quizzes
+    if (topic === 'islamic1') {
+        subjectName = "Surah An-Nas";
         questions = [
             {
-                question: "Which sense organ do we use to see?",
-                options: ["Ears", "Eyes", "Nose", "Tongue"],
-                answer: 1
+                question: "Surah An-Nas is the ___ surah in the Quran?",
+                options: ["First", "Middle", "Last"],
+                answer: 2
             },
             {
-                question: "Can a rock grow and reproduce?",
-                options: ["Yes", "No"],
+                question: "What do we seek in Surah An-Nas?",
+                options: ["Money", "Protection from evil", "Good grades"],
                 answer: 1
             }
         ];
-    } else if (topic === 'science2') {
+    }
+    else if (topic === 'islamic2') {
+        subjectName = "20 Sifat Allah";
         questions = [
             {
-                question: "Should you run in the science room?",
-                options: ["Yes", "No"],
+                question: "What does 'Wujud' mean?",
+                options: ["Allah knows everything", "Allah exists", "Allah is powerful"],
                 answer: 1
-            },
-            {
-                question: "What should you wear during experiments?",
-                options: ["Lab coat", "Swimsuit", "Pajamas"],
-                answer: 0
             }
         ];
     }
     
+    // Other subjects can be added similarly...
+    
     let score = 0;
+    alert(`Starting ${subjectName} quiz!`);
     
     questions.forEach((q, i) => {
         const userAnswer = prompt(
@@ -40,11 +43,20 @@ function startQuiz(topic) {
         
         if (parseInt(userAnswer) - 1 === q.answer) {
             score++;
-            alert("Correct! 👍");
+            alert("Correct! 🎉");
         } else {
-            alert(`Oops! The correct answer is ${q.options[q.answer]}`);
+            alert(`Good try! The answer is: ${q.options[q.answer]}`);
         }
     });
     
-    alert(`Quiz complete! You scored ${score}/${questions.length}`);
+    const percentage = Math.round((score / questions.length) * 100);
+    alert(`Quiz complete!\nYou scored ${score}/${questions.length} (${percentage}%)`);
+    
+    if (percentage >= 80) {
+        alert("Excellent work! 🌟");
+    } else if (percentage >= 50) {
+        alert("Good job! Keep practicing!");
+    } else {
+        alert("Let's review this topic again!");
+    }
 }
