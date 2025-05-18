@@ -1,47 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Science Revision</title>
-    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body class="science-bg">
-    <header>
-        <h1>Science Revision</h1>
-        <a href="../index.html" class="home-button">🏠 Home</a>
-    </header>
-    
-    <div class="topics">
-        <div class="topic-card">
-            <h2>1. Senses and Living Things</h2>
-            <ul>
-                <li>5 senses and their organs</li>
-                <li>Living vs non-living things</li>
-            </ul>
-            <button class="quiz-button">Try Quiz</button>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">← Back</a>
+            <h1>Science Revision</h1>
+            <img src="images/science.png" alt="Science Icon" width="100">
+        </header>
+        
+        <div class="topic-section">
+            <div class="topic">
+                <h2>1. Senses and Living Things</h2>
+                <div class="content-box">
+                    <h3>Five Senses:</h3>
+                    <ul>
+                        <li>👀 Sight - Eyes</li>
+                        <li>👂 Hearing - Ears</li>
+                        <li>👃 Smell - Nose</li>
+                        <li>👅 Taste - Tongue</li>
+                        <li>✋ Touch - Skin</li>
+                    </ul>
+                    
+                    <h3>Living vs Non-living:</h3>
+                    <p>Living things can grow, breathe, reproduce, and need food/water.</p>
+                </div>
+                <button class="quiz-btn" onclick="startQuiz('science1')">Try Quiz</button>
+            </div>
+            
+            <div class="topic">
+                <h2>2. Science Room Rules</h2>
+                <div class="content-box">
+                    <ul>
+                        <li>🚫 No running</li>
+                        <li>👕 Wear lab coat if needed</li>
+                        <li>🧪 Ask teacher before touching equipment</li>
+                        <li>🧼 Clean up after experiments</li>
+                    </ul>
+                </div>
+                <button class="quiz-btn" onclick="startQuiz('science2')">Try Quiz</button>
+            </div>
         </div>
         
-        <div class="topic-card">
-            <h2>2. Science Room Rules</h2>
-            <ul>
-                <li>Safety rules</li>
-                <li>Proper behavior</li>
-            </ul>
-            <button class="quiz-button">Try Quiz</button>
-        </div>
-        
-        <div class="topic-card">
-            <h2>3. Human</h2>
-            <ul>
-                <li>Reproduction</li>
-                <li>Stages of growth</li>
-                <li>Changes we experience</li>
-            </ul>
-            <button class="quiz-button">Try Quiz</button>
-        </div>
+        <footer>
+            <p>Good luck with your science exam!</p>
+        </footer>
     </div>
     
-    <footer>
-        <p>Good luck with your exams!</p>
-    </footer>
+    <script src="scripts/quiz.js"></script>
 </body>
 </html>
